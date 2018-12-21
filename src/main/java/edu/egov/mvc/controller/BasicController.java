@@ -12,6 +12,8 @@ import edu.egov.mvc.dao.MemberDAO;
 public class BasicController {
 	@Autowired
 	MemberDAO dao;
+	String st;
+	//test
 	
 	/* TODO 12-09. 요청을 처리할 URL Mapping 지정 및 컨트롤러 메소드 작성 */
 	@RequestMapping("index.do")
