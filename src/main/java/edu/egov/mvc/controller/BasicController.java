@@ -2,6 +2,8 @@ package edu.egov.mvc.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -51,6 +53,12 @@ public class BasicController {
 		for(int i=0; i<labelList.size(); i++){
 			dao.updateLabel(labelList.get(i), labelKrList.get(i));
 		}
+		
+		List<Map<String, Object>> rank = dao.selectRanking();
+		
+		rank.get(0).get("labelKr");
+		
+		model.addAttribute("labelRank", rank);
 	
 
 		return "result";
@@ -63,43 +71,6 @@ public class BasicController {
 	}
 //	
 }
-
-
-
-/* TODO 12-10. 요청을 처리할 URL Mapping 지정 및 컨트롤러 메소드 작성 */
-//@RequestMapping("main.do")
-//public String main(
-//		@RequestParam(name="page", required=false) String p,
-//		@RequestParam(name="name", required=false) String name) {
-//	System.out.println(p);
-//	System.out.println(name);
-//	return "main";
-//}
-//// 로그인 기능
-//@RequestMapping("login")
-//public String login(
-//		@RequestParam(name="id", required=false) String id,
-//		@RequestParam(name="pw", required=false) String pw) {
-//	
-//	// 데이터베이스 확인 작업
-//	String result = dao.login();
-//	
-//	
-//	
-//	if(id != null) {
-//		if(id.equals("egov") && pw.equals("1")) {
-//			return "login_ok";
-//		}
-//	}
-//	
-//	return "login";
-//}
-//
-//@RequestMapping("resume")
-//public String resume() {
-//	return "resume";
-//}
-
 
 
 
