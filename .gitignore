@@ -1,1 +1,5 @@
 target/classes/edu/egov/mvc/controller/BasicController.class
+target/classes/egovframework/spring/context-common.xml
+target/classes/edu/egov/mvc/dao/MemberDAO.class
+target/m2e-wtp/web-resources/META-INF/maven/edu.egov.mvc/basic/pom.properties
+target/classes/edu/egov/mvc/Kakao.class
