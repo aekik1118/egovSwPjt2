@@ -3,6 +3,7 @@ package edu.egov.mvc.dao;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -13,16 +14,13 @@ public class MemberDAO {
 	
 	public void updateLabel(String label, String labelKr){
 		System.out.println(label);
-		
-		Map<String, Object> map = jt.queryForMap("select * from label where label=?",label);
-		
-		if(map == null){
-			System.out.println("null");
+		try{
+			Map<String, Object> map = jt.queryForMap("select * from label where label=?",label);	
+			jt.update("UPDATE LABEL SET count = count + 1 where label = ?",label);
+		}catch(EmptyResultDataAccessException e){
+			jt.update("INSERT INTO label(label, labelKr) VALUES( ?, ? )",label,labelKr);
+			System.out.println("insert");
 		}
-		else{
-			System.out.println("not Null");
-		}
-		
 	}
 	
 	public String login() {
